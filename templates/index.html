@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block title %}Register{% endblock %}
+{% block content %}
+
+<div class="container mt-4">
+    <div class="card shadow-lg rounded p-4">
+        <h2 class="mb-4 text-center">Patient Registration Form</h2>
+        <form action="/submit" method="post" class="row g-3">
+
+            <!-- Patient -->
+            <div class="col-12"><h4>Patient</h4></div>
+            <div class="col-md-6">
+                <label class="form-label">Patient ID</label>
+                <input type="text" name="patient_id" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Name</label>
+                <input type="text" name="patient_name" class="form-control" required>
+            </div>
+
+            <!-- Appointment -->
+            <div class="col-12"><h4>Appointment</h4></div>
+            <div class="col-md-6">
+                <label class="form-label">Date</label>
+                <input type="date" name="appointment_date" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Frequency</label>
+                <input type="text" name="appointment_frequency" class="form-control" required>
+            </div>
+
+            <!-- Consultation -->
+            <div class="col-12"><h4>Consultation</h4></div>
+            <div class="col-md-6">
+                <label class="form-label">Doctor Name</label>
+                <input type="text" name="consultation_doctor" class="form-control" required>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Date</label>
+                <input type="date" name="consultation_date" class="form-control" required>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Remarks</label>
+                <input type="text" name="remarks" class="form-control">
+            </div>
+
+            <!-- More Details -->
+            <div class="col-12"><h4>More Details</h4></div>
+            <div class="col-md-4">
+                <label class="form-label">Area Code</label>
+                <input type="text" name="area_code" class="form-control" required>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Number</label>
+                <input type="text" name="number" class="form-control" required>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Name</label>
+                <input type="text" name="meditation_name" class="form-control" required>
+            </div>
+
+            <!-- Medication -->
+            <div class="col-12"><h4>Medication</h4></div>
+            <div class="col-md-4">
+                <label class="form-label">Medication ID</label>
+                <input type="text" name="medication_id" class="form-control" required>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Name</label>
+                <input type="text" name="medication_name" class="form-control" required>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">End Date</label>
+                <input type="date" name="end_date" class="form-control" required>
+            </div>
+
+            <!-- Doctor Monitoring -->
+            <div class="col-12"><h4>Doctor Monitoring</h4></div>
+            <div class="col-md-6">
+                <label class="form-label">Recovery Status</label>
+                <input type="text" name="recovery_status" class="form-control" required>
+            </div>
+
+            <!-- Submit -->
+            <div class="col-12 mt-3 text-center">
+                <button type="submit" class="btn btn-primary px-5">Submit</button>
+                <a href="/dashboard" class="btn btn-secondary px-4">Go to Dashboard</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">postOPcare Dashboard</h2>
+
+    <!-- Patients Table -->
+    <h4 class="mt-5">Patients</h4>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Patient ID</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in patients|sort(attribute='id') %}
+            <tr>
+                <td>{{ p.id }}</td>
+                <td>{{ p.name }}</td>
+                <td>
+                    <form action="{{ url_for('delete_patient', patient_id=p.id) }}" method="post" onsubmit="return confirm('Are you sure to delete this patient?');">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Appointments Table -->
+    <h4 class="mt-5">Appointments</h4>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Date</th>
+                <th>Frequency</th>
+                <th>Patient ID</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in appointments|sort(attribute='date') %}
+            <tr>
+                <td>{{ a.date }}</td>
+                <td>{{ a.frequency }}</td>
+                <td>{{ a.patient_id }}</td>
+                <td>
+                    <form action="{{ url_for('delete_appointment', appointment_id=a.id) }}" method="post" onsubmit="return confirm('Are you sure to delete this appointment?');">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Consultations Table -->
+    <h4 class="mt-5">Consultations</h4>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Doctor Name</th>
+                <th>Date</th>
+                <th>Remarks</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in consultations|sort(attribute='date') %}
+            <tr>
+                <td>{{ c.doctor_name }}</td>
+                <td>{{ c.date }}</td>
+                <td>{{ c.remarks }}</td>
+                <td>
+                    <form action="{{ url_for('delete_consultation', consultation_id=c.id) }}" method="post" onsubmit="return confirm('Delete this consultation?');">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Meditations Table -->
+    <h4 class="mt-5">More Details</h4>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Area Code</th>
+                <th>Number</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for m in meditations|sort(attribute='id') %}
+            <tr>
+                <td>{{ m.area_code }}</td>
+                <td>{{ m.number }}</td>
+                <td>{{ m.name }}</td>
+                <td>
+                    <form action="{{ url_for('delete_meditation', meditation_id=m.id) }}" method="post" onsubmit="return confirm('Delete this meditation record?');">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Medications Table -->
+<h4 class="mt-5">Medications</h4>
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Medication ID</th>
+            <th>Name</th>
+            <th>End Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for m in medications|sort(attribute='id') %}
+        <tr>
+            <td>{{ m.id }}</td>  <!-- ✅ Fixed here -->
+            <td>{{ m.name }}</td>
+            <td>{{ m.end_date }}</td>
+            <td>
+                <form action="{{ url_for('delete_medication', medication_id=m.id) }}" method="post" onsubmit="return confirm('Delete this medication record?');">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+    <!-- Doctor Monitoring Table -->
+    <h4 class="mt-5">Doctor Monitoring</h4>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Recovery Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in doctor_monitorings|sort(attribute='id') %}
+            <tr>
+                <td>{{ d.recovery_status }}</td>
+                <td>
+                    <form action="{{ url_for('delete_doctor_monitoring', monitoring_id=d.id) }}" method="post" onsubmit="return confirm('Delete this monitoring record?');">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
