@@ -1,0 +1,25 @@
+# Environment variables
+.env
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*.db
+instance/
+venv/
+env/
+.venv/
+
+# Editor / IDE
+.spyproject/
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
